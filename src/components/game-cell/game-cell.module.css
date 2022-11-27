@@ -1,0 +1,33 @@
+.cell {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(253, 243, 232);
+  border: 1px solid rgb(201, 201, 201);
+}
+
+.cell:hover {
+    /* background-color: rgb(209, 224, 228); */
+    cursor: default;
+}
+
+.mainNumber {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 35px;
+  margin: 0;
+}
+
+.rb {
+  border-right: 2px solid black;
+}
+
+.bb {
+  border-bottom: 2px solid black;
+}
+
+.selectedCell{
+  background-color: rgb(144, 221, 244);
+}

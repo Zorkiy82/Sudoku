@@ -1,9 +1,24 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HomePage } from "./pages/home/home";
+
+import "./App.css";
+import { GamePage } from "./pages/game/game";
 
 function App() {
   return (
-    <h1>Hello, World!!!</h1>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/" exact={true}>
+            <HomePage />
+          </Route>
+          <Route path="/game" exact={true}>
+            <GamePage />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
