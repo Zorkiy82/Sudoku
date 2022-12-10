@@ -1,9 +1,11 @@
 import { TGameFieldActions } from "../../actions/game-field/game-field";
-import { SET_SELECTED_CELL } from "../../constants";
-import { TSelectedCell } from "../../types/data";
+import { GET_GAME_FIELD, SET_SELECTED_CELL } from "../../constants";
+import { TSelectedCell, TGameFieldCell } from "../../types/data";
+import { createGameField } from "./game-field.utils";
 
 export type TGameFieldState = {
   selectedCell: TSelectedCell;
+  gameField: Array<Array<TGameFieldCell>> | [];
 };
 
 const gameFieldInitialState: TGameFieldState = {
@@ -11,6 +13,7 @@ const gameFieldInitialState: TGameFieldState = {
     rowIndex: -1,
     columnIndex: -1,
   },
+  gameField: [],
 };
 
 export const gameFieldReducer = (
@@ -22,7 +25,13 @@ export const gameFieldReducer = (
       return {
         ...state,
         selectedCell: { ...action.data },
-      };      
+      };
+    }
+    case GET_GAME_FIELD: {      
+      return {
+        ...state,
+        gameField: createGameField(),
+      };
     }
     default: {
       return state;

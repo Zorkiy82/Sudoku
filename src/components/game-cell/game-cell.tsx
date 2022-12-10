@@ -1,16 +1,15 @@
 import { FC, useMemo } from "react";
 import { SET_SELECTED_CELL } from "../../services/constants";
 import { useSelector, useDispatch } from "../../services/hooks";
-import { TCellNumber08, TCellNumber09 } from "../../services/types/data";
 import styles from "./game-cell.module.css";
 
-type TGameCell = {
-  mainNumber: TCellNumber09;
-  rowIndex: TCellNumber08;
-  columnIndex: TCellNumber08;
+type TGameCellProps = {
+  mainNumber: number;
+  rowIndex: number;
+  columnIndex: number;
 };
 
-export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCell) => {
+export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCellProps) => {
   const dispatch = useDispatch();
   const selectedCell = useSelector((state) => state.gameField.selectedCell);
 
@@ -21,7 +20,7 @@ export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCell) => {
     );
   }, [selectedCell, columnIndex, rowIndex]);
 
-  const addCellStyles = useMemo(() => {    
+  const addCellStyles = useMemo(() => {
     return `${rowIndex === 2 || rowIndex === 5 ? styles.bb : ""}${
       columnIndex === 2 || columnIndex === 5 ? " " + styles.rb : ""
     }`;
@@ -31,7 +30,12 @@ export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCell) => {
   }
 
   return (
-    <div className={`${styles.cell} ${addCellStyles} ${isSelectedCell?styles.selectedCell:''}`} onClick={onClickHandler}>
+    <div
+      className={`${styles.cell} ${addCellStyles} ${
+        isSelectedCell ? styles.selectedCell : ""
+      }`}
+      onClick={onClickHandler}
+    >
       <p className={styles.mainNumber}>{mainNumber ? mainNumber : ""}</p>
     </div>
   );

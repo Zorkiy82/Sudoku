@@ -1,7 +1,19 @@
-export type TCellNumber08 = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-export type TCellNumber09 = TCellNumber08 | 9;
-
 export type TSelectedCell = {
-  rowIndex: TCellNumber08 | -1;
-  columnIndex: TCellNumber08 | -1;
+  rowIndex: number;
+  columnIndex: number;
 };
+
+export type TUserChangeCell = {
+  mainValue: number;
+  templateValue: Array<number>;
+};
+
+export type TGameFieldCell = TUserChangeCell & {
+  isFixed: boolean;
+  isHighlighted: boolean;
+  isCorrect: boolean;
+};
+
+export type TGeneratedField = Array<Array<number>>;
+export type TUserChangeField = Array<Array<TUserChangeCell>>;
+export type TGameField = Array<Array<TGameFieldCell>>;

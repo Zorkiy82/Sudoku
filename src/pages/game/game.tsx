@@ -1,13 +1,27 @@
+import { type } from "os";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GameField } from "../../components/game-field/game-field";
-import styles from "./game.module.css"
+import { Numpad } from "../../components/numpad/numpad";
+import { GET_GAME_FIELD } from "../../services/constants";
+import { useDispatch } from "../../services/hooks";
+import styles from "./game.module.css";
 
 export function GamePage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: GET_GAME_FIELD });
+  }, []);
   return (
     <div className={styles.main}>
-      <Link className={styles.link} to="/">На главную</Link>
+      <Link className={styles.link} to="/">
+        На главную
+      </Link>
       <h1>Тут будет GamePage</h1>
-      <GameField />
+      <div className={styles.gameSection}>
+        <GameField />
+        <Numpad />
+      </div>
     </div>
   );
 }

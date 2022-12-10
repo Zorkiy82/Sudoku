@@ -1,4 +1,4 @@
-import { SET_SELECTED_CELL } from "../../constants";
+import { SET_SELECTED_CELL, GET_GAME_FIELD } from "../../constants";
 import { TSelectedCell } from "../../types/data";
 
 export interface ISetSelectedCellAction {
@@ -6,4 +6,8 @@ export interface ISetSelectedCellAction {
   data: TSelectedCell;
 }
 
-export type TGameFieldActions = ISetSelectedCellAction;
+export interface IGetGameField {
+  readonly type: typeof GET_GAME_FIELD;
+}
+
+export type TGameFieldActions = ISetSelectedCellAction | IGetGameField;

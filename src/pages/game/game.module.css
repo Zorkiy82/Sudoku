@@ -5,3 +5,8 @@
 .link {
   text-decoration: none;
 }
+
+.gameSection {
+  display: flex;
+  gap: 50px;
+}
