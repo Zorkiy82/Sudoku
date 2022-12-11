@@ -1,32 +1,45 @@
 import { FC, useMemo } from "react";
+import { isErrored } from "stream";
 import { SET_SELECTED_CELL } from "../../services/constants";
 import { useSelector, useDispatch } from "../../services/hooks";
 import styles from "./game-cell.module.css";
 
 type TGameCellProps = {
-  mainNumber: number;
   rowIndex: number;
   columnIndex: number;
 };
 
-export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCellProps) => {
+export const GameCell = ({ rowIndex, columnIndex }: TGameCellProps) => {
   const dispatch = useDispatch();
   const selectedCell = useSelector((state) => state.gameField.selectedCell);
+  const { mainValue, notes, isCorrect, isFixed, isHighlighted } = useSelector(
+    (state) => state.gameField.gameField[rowIndex][columnIndex]
+  );
 
   const isSelectedCell = useMemo(() => {
-    return (
-      selectedCell.columnIndex === columnIndex &&
-      selectedCell.rowIndex === rowIndex
-    );
+    return selectedCell.column === columnIndex && selectedCell.row === rowIndex;
   }, [selectedCell, columnIndex, rowIndex]);
 
   const addCellStyles = useMemo(() => {
-    return `${rowIndex === 2 || rowIndex === 5 ? styles.bb : ""}${
+    const res = `${rowIndex === 2 || rowIndex === 5 ? styles.bb : ""}${
       columnIndex === 2 || columnIndex === 5 ? " " + styles.rb : ""
     }`;
-  }, []);
+    return res;
+  }, [rowIndex, rowIndex]);
+
+  const addMainNumberStyles = useMemo(() => {
+    let res = "";
+    res += !isFixed ? ` ${styles.mainNumberUser}` : "";
+    res += !isCorrect ? ` ${styles.mainNumberErorr}` : "";
+
+    return res;
+  }, [isFixed, isCorrect]);
+
   function onClickHandler() {
-    dispatch({ type: SET_SELECTED_CELL, data: { rowIndex, columnIndex } });
+    dispatch({
+      type: SET_SELECTED_CELL,
+      data: { row: rowIndex, column: columnIndex },
+    });
   }
 
   return (
@@ -34,9 +47,11 @@ export const GameCell = ({ mainNumber, rowIndex, columnIndex }: TGameCellProps) 
       className={`${styles.cell} ${addCellStyles} ${
         isSelectedCell ? styles.selectedCell : ""
       }`}
-      onClick={onClickHandler}
+      onMouseDown={onClickHandler}
     >
-      <p className={styles.mainNumber}>{mainNumber ? mainNumber : ""}</p>
+      <p className={`${styles.mainNumber} ${addMainNumberStyles}`}>
+        {mainValue ? mainValue : ""}
+      </p>
     </div>
   );
 };

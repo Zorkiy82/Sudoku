@@ -1,8 +1,7 @@
-import { type } from "os";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GameField } from "../../components/game-field/game-field";
-import { Numpad } from "../../components/numpad/numpad";
+import { Keyboard } from "../../components/keyboard/keyboard";
 import { GET_GAME_FIELD } from "../../services/constants";
 import { useDispatch } from "../../services/hooks";
 import styles from "./game.module.css";
@@ -20,7 +19,7 @@ export function GamePage() {
       <h1>Тут будет GamePage</h1>
       <div className={styles.gameSection}>
         <GameField />
-        <Numpad />
+        <Keyboard />
       </div>
     </div>
   );

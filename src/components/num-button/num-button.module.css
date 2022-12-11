@@ -1,0 +1,18 @@
+.numButtonText {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 35px;
+}
+
+.numButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+  border-radius: 5%;
+}
+
+.numButton:hover {
+  background-color: aqua;
+  cursor: default;
+}

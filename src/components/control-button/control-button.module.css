@@ -1,0 +1,15 @@
+.controlButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background-color: rgb(199, 248, 156);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.controlButton:hover {
+    background-color: greenyellow;
+    cursor: default;
+}

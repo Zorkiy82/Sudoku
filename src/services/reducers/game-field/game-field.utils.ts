@@ -19,7 +19,7 @@ const getEmpetyUserChangeField = (): TUserChangeField => {
     userField.push(
       Array(9).fill({
         mainValue: 0,
-        templateValue: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        notes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       })
     );
   }
@@ -41,7 +41,7 @@ export const createGameField = (): TGameField => {
   const userField = getUserChangeField();
   const defaultGameCell: TGameFieldCell = {
     mainValue: 0,
-    templateValue: [],
+    notes: [],
     isCorrect: true,
     isFixed: false,
     isHighlighted: false,
@@ -59,7 +59,7 @@ export const createGameField = (): TGameField => {
         gameCell = {
           ...gameCell,
           mainValue: userCell.mainValue,
-          templateValue: userCell.templateValue.slice(),
+          notes: userCell.notes.slice(),
           isFixed: false,
         };
       }

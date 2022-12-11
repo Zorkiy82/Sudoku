@@ -10,14 +10,22 @@
 }
 
 .cell:hover {
-    /* background-color: rgb(209, 224, 228); */
-    cursor: default;
+  /* background-color: rgb(209, 224, 228); */
+  cursor: default;
 }
 
 .mainNumber {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 35px;
   margin: 0;
+}
+
+.mainNumberUser {
+  color: blue;
+}
+
+.mainNumberErorr {
+  color: RED;
 }
 
 .rb {
@@ -28,6 +36,6 @@
   border-bottom: 2px solid black;
 }
 
-.selectedCell{
+.selectedCell {
   background-color: rgb(144, 221, 244);
 }

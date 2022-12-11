@@ -1,11 +1,11 @@
 export type TSelectedCell = {
-  rowIndex: number;
-  columnIndex: number;
+  row: number;
+  column: number;
 };
 
 export type TUserChangeCell = {
   mainValue: number;
-  templateValue: Array<number>;
+  notes: Array<number>;
 };
 
 export type TGameFieldCell = TUserChangeCell & {

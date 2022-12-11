@@ -12,7 +12,6 @@ export const GameField = () => {
           return (
             <GameCell
               key={`${rowIndex}-${columnIndex}`}
-              mainNumber={cellItem.mainValue}
               {...{ rowIndex, columnIndex }}
             />
           );
