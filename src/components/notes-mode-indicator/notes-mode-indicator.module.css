@@ -1,0 +1,13 @@
+.indicator {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+}
+
+.active {
+    background-color: green;
+}

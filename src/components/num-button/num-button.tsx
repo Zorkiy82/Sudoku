@@ -7,9 +7,9 @@ type TNumButtonProps = {
 };
 
 export const NumButton = ({ value }: TNumButtonProps) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleOnClick = () => {
-    dispatch(handleNumPadClick(value))
+    dispatch(handleNumPadClick(value));
   };
   return (
     <div className={styles.numButton} onClick={handleOnClick}>

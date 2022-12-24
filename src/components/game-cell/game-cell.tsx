@@ -50,8 +50,14 @@ export const GameCell = ({ rowIndex, columnIndex }: TGameCellProps) => {
       onMouseDown={onClickHandler}
     >
       <p className={`${styles.mainNumber} ${addMainNumberStyles}`}>
-        {mainValue ? mainValue : ""}
+        {mainValue ? String(mainValue) : ""}
       </p>
+      <div className={styles.notesContainer}>
+        {notes.map((value) => (
+          <p>{value ? String(value) : ""}</p>
+          
+        ))}
+      </div>
     </div>
   );
 };

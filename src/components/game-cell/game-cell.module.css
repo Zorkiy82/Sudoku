@@ -1,5 +1,6 @@
 .cell {
   display: flex;
+  position: relative;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -9,15 +10,17 @@
   border: 1px solid rgb(201, 201, 201);
 }
 
+.cell p {
+  margin: 0;
+}
+
 .cell:hover {
-  /* background-color: rgb(209, 224, 228); */
   cursor: default;
 }
 
 .mainNumber {
-  font-family: Helvetica, Arial, sans-serif;
+  /* font-family: Helvetica, Arial, sans-serif; */
   font-size: 35px;
-  margin: 0;
 }
 
 .mainNumberUser {
@@ -38,4 +41,24 @@
 
 .selectedCell {
   background-color: rgb(144, 221, 244);
+}
+
+.notesContainer {
+  position: absolute;  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.notesContainer p {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: gray;
 }

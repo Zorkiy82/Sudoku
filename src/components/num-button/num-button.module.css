@@ -1,10 +1,11 @@
 .numButtonText {
   margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
+  /* font-family: Helvetica, Arial, sans-serif; */
   font-size: 35px;
 }
 
 .numButton {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

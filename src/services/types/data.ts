@@ -12,6 +12,7 @@ export type TGameFieldCell = TUserChangeCell & {
   isFixed: boolean;
   isHighlighted: boolean;
   isCorrect: boolean;
+  _id: string;
 };
 
 export type TGeneratedField = Array<Array<number>>;

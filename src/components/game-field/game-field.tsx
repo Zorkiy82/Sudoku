@@ -11,7 +11,7 @@ export const GameField = () => {
         rowItem.map((cellItem, columnIndex) => {
           return (
             <GameCell
-              key={`${rowIndex}-${columnIndex}`}
+              key={cellItem._id}
               {...{ rowIndex, columnIndex }}
             />
           );

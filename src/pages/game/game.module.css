@@ -8,5 +8,8 @@
 
 .gameSection {
   display: flex;
+  justify-content: center;
   gap: 50px;
+  user-select: none;
+  font-family: Helvetica, Arial, sans-serif;
 }

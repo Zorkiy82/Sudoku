@@ -41,6 +41,7 @@ export const createGameField = (): TGameField => {
   const userField = getUserChangeField();
   const defaultGameCell: TGameFieldCell = {
     mainValue: 0,
+    _id: "",
     notes: [],
     isCorrect: true,
     isFixed: false,
@@ -51,10 +52,15 @@ export const createGameField = (): TGameField => {
     for (let k = 0; k < 9; k++) {
       const genCell = genField[i][k];
       const userCell = userField[i][k];
-      let gameCell = { ...defaultGameCell };
+      let gameCell = { ...defaultGameCell, _id: `${i}-${k}` };
 
       if (genCell) {
-        gameCell = { ...gameCell, mainValue: genCell, isFixed: true };
+        gameCell = {
+          ...gameCell,
+          mainValue: genCell,
+          // notes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          isFixed: true,
+        };
       } else {
         gameCell = {
           ...gameCell,
