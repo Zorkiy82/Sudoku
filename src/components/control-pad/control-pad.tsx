@@ -1,5 +1,6 @@
+import { type } from "os";
 import { clearSelectedCell } from "../../services/actions/game-field/game-field";
-import { TOGGLE_NOTES_MODE } from "../../services/constants";
+import { SET_SELECTED_CELL, TOGGLE_NOTES_MODE } from "../../services/constants";
 import { useDispatch } from "../../services/hooks";
 import { ControlButton } from "../control-button/control-button";
 import { NotesModeIndicator } from "../notes-mode-indicator/notes-mode-indicator";

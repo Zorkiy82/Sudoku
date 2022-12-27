@@ -14,7 +14,7 @@ export function GamePage() {
   return (
     <div className={styles.main}>
       <Link className={styles.link} to="/">
-        На главную
+        "На главную"
       </Link>
       <h1>Тут будет GamePage</h1>
       <div className={styles.gameSection}>

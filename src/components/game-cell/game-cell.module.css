@@ -19,7 +19,6 @@
 }
 
 .mainNumber {
-  /* font-family: Helvetica, Arial, sans-serif; */
   font-size: 35px;
 }
 
@@ -39,12 +38,16 @@
   border-bottom: 2px solid black;
 }
 
+.highlighted {
+  background-color: rgb(228, 228, 228);
+}
+
 .selectedCell {
   background-color: rgb(144, 221, 244);
 }
 
 .notesContainer {
-  position: absolute;  
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -54,11 +57,13 @@
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-}
-
-.notesContainer p {
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.45;
   color: gray;
+}
+
+.selectedNumber {
+  color: black;
+  font-weight: 700;
 }

@@ -76,3 +76,35 @@ export const createGameField = (): TGameField => {
 
   return gameField;
 };
+
+export const clearDependentNotes = (
+  curRow: number,
+  curColumn: number,
+  curValue: number,
+  field: TGameFieldCell[][]
+) => {
+  const startRow = Math.floor(curRow / 3) * 3;
+  const startColumn = Math.floor(curColumn / 3) * 3;
+
+  for (let r = startRow; r < startRow + 3; r++) {
+    for (let c = startColumn; c < startColumn + 3; c++) {
+      if (!field[r][c].isFixed) {
+        field[r][c].notes[curValue - 1] = 0;
+      }
+    }
+  }
+  field[curRow].map((value) => {
+    if (!value.isFixed) {
+      value.notes[curValue - 1] = 0;
+    }
+    return {
+      ...value,
+    };
+  });
+
+  for (let i = 0; i < 9; i++) {
+    if (!field[i][curColumn].isFixed) {
+      field[i][curColumn].notes[curValue - 1] = 0;
+    }
+  }
+};

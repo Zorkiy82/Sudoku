@@ -10,7 +10,7 @@ import {
   DELETE_NOTES_VALUE,
 } from "../../constants";
 import { TSelectedCell, TGameFieldCell } from "../../types/data";
-import { createGameField } from "./game-field.utils";
+import { clearDependentNotes, createGameField } from "./game-field.utils";
 
 export type TGameFieldState = {
   selectedCell: TSelectedCell;
@@ -22,6 +22,7 @@ const gameFieldInitialState: TGameFieldState = {
   selectedCell: {
     row: 0,
     column: 0,
+    value: 0,
   },
 
   notesMode: false,
@@ -43,7 +44,9 @@ export const gameFieldReducer = (
     case SET_MAIN_VALUE: {
       const gameField = state.gameField.slice();
       const { row, column, value } = action.data;
+
       gameField[row][column].mainValue = value;
+      clearDependentNotes(row, column, value, gameField);
       return {
         ...state,
         gameField: gameField,
@@ -51,7 +54,7 @@ export const gameFieldReducer = (
     }
 
     case DELETE_MAIN_VALUE: {
-      console.log("удалить основную цифру")
+      console.log("удалить основную цифру");
       const gameField = state.gameField.slice();
       const { row, column } = action.data;
       gameField[row][column].mainValue = 0;
@@ -64,7 +67,7 @@ export const gameFieldReducer = (
     case SET_NOTES_VALUE: {
       const gameField = state.gameField.slice();
       const { row, column, value } = action.data;
-      gameField[row][column].notes[value-1] = value;
+      gameField[row][column].notes[value - 1] = value;
       return {
         ...state,
         gameField: gameField,
@@ -74,7 +77,7 @@ export const gameFieldReducer = (
     case DELETE_NOTES_VALUE: {
       const gameField = state.gameField.slice();
       const { row, column, value } = action.data;
-      gameField[row][column].notes[value-1]  = 0;
+      gameField[row][column].notes[value - 1] = 0;
       return {
         ...state,
         gameField: gameField,

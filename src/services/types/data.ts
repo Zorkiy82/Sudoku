@@ -1,6 +1,7 @@
 export type TSelectedCell = {
   row: number;
   column: number;
+  value?: number;
 };
 
 export type TUserChangeCell = {

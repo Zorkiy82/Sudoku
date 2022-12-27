@@ -67,10 +67,13 @@ export const handleNumPadClick: AppThunk = (value) => (dispatch) => {
 
   if (isNotFixedSelectedCell()) {
     if (!notesMode) {
-      dispatch({type:DELETE_ALL_NOTES_VALUES,data:{column, row}})
+      dispatch({ type: DELETE_ALL_NOTES_VALUES, data: { column, row } });
       if (value === gameField[row][column].mainValue) {
-        
         dispatch({ type: DELETE_MAIN_VALUE, data: { column, row } });
+        dispatch({
+          type: SET_SELECTED_CELL,
+          data: { column: column, row: row, value: 0 },
+        });
       } else {
         dispatch({
           type: SET_MAIN_VALUE,
@@ -80,9 +83,17 @@ export const handleNumPadClick: AppThunk = (value) => (dispatch) => {
             value: value,
           },
         });
+        dispatch({
+          type: SET_SELECTED_CELL,
+          data: { column: column, row: row, value: value },
+        });
       }
     } else {
       dispatch({ type: DELETE_MAIN_VALUE, data: { column, row } });
+      dispatch({
+        type: SET_SELECTED_CELL,
+        data: { column: column, row: row, value: 0 },
+      });
       if (value === gameField[row][column].notes[value - 1]) {
         dispatch({
           type: DELETE_NOTES_VALUE,
@@ -123,6 +134,10 @@ export const clearSelectedCell: AppThunk = () => (dispatch) => {
         row: row,
         column: column,
       },
+    });
+    dispatch({
+      type: SET_SELECTED_CELL,
+      data: { column: column, row: row, value: 0 },
     });
   }
 };
